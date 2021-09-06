@@ -1,0 +1,11 @@
+[Unit]
+Description=Watch Chia Farm
+[Service]
+User=chia
+Type=simple
+ExecStart=/home/chia/farmer/bin/chia_watch.sh
+TimeoutStartSec=0
+Restart=always
+StartLimitInterval=0
+[Install]
+WantedBy=multi-user.target
