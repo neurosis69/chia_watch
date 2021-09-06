@@ -1,35 +1,41 @@
 #!/bin/bash
-#initialize variables until first eligible
+#################
+##Configuration##
+#################
+#osuser
+osuser=chia
+#chia/flax/..
+blockchain_name=chia
+#Node Role: farmer/harvester
+node_role=farmer
 seconds_without_eligible_until_restart="90"
-#seconds_until_write_report="900"
 seconds_until_write_report="900"
+
+#add local connections after restart
+initiate_local_connects="yes"
+
+#path/files
+blockchain=`eval echo "~$osuser"/${blockchain_name}-blockchain`
+logdir=`eval echo "~$osuser"/.${blockchain_name}/mainnet/log`
+rundir=`eval echo "~$osuser"/.${blockchain_name}/mainnet/run`
+
+#filenames
+restartlog=restart_triggered_by_eligible_time.out
+reportlog=watchlog_report.out
+
+##################
+##Initialization##
+##################
 last_eligible=`date +%s`
 seconds_since_last_eligible="0"
 last_report=`date +%s`
 seconds_since_last_report="0"
 eligible_interval_count="0"
+
 #Parameter used to distinguish between restart or normal operation
 restart_active="no"
 #Parameter used to prevent buffered lines containing eligible string to be used
 loading_plots="no"
-
-#osuser
-osuser=chia
-#chia/flax/..
-blockchain_name=chia
-
-#Node Role
-#farmer/harvester
-node_role=farmer
-
-#path/files
-#logdir=~chia/.chia/mainnet/log
-#rundir=~chia/.chia/mainnet/run
-blockchain=`eval echo "~$osuser"/${blockchain_name}-blockchain`
-logdir=`eval echo "~$osuser"/.${blockchain_name}/mainnet/log`
-rundir=`eval echo "~$osuser"/.${blockchain_name}/mainnet/run`
-restartlog=restart_triggered_by_eligible_time.out
-reportlog=watchlog_report.out
 
 #cleanup
 [ -f $logdir/trigger.restart ] && rm $logdir/trigger.restart
@@ -37,10 +43,9 @@ reportlog=watchlog_report.out
 #assign current $node_role pid
 current_pid=`cat $rundir/${blockchain_name}_${node_role}.pid`
 
-#add local connections after restart
-initiate_local_connects="yes"
-
-#LOOP
+########
+##LOOP##
+########
 tail -Fn0 $logdir/debug.log | \
 while read line ; do
                 #Check for eligible plots
