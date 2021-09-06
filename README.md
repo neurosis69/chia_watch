@@ -32,7 +32,7 @@ Ensure ~chia/.chia/mainnet/log and ~chia/.chia/mainnet/run directories are reada
 
 Copy chia_watch.service to /etc/systemd/system
 
-Change path for parameter ExecStart to the location of zchia_watch.sh.
+Change path for parameter ExecStart to the location of chia_watch.sh.
 
 systemctl daemon-reload
 
