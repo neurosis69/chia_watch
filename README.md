@@ -3,7 +3,7 @@ For every signage point harvester should check if plots are eligible for farming
 
 Current harvester versions seem to get stuck after some time. Sometimes after a couple of hours, sometimes after a few days.
 
-This little service checks for such occurrences and restarts chia.
+This little service checks for such occurrences and restarts chia if no plots were eligible for a certain amount of time.
 
 
 # How it works
