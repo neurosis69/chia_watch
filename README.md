@@ -28,7 +28,7 @@ Copy chia_watch.sh to the chia farmer host.
 
 Ensure ~chia/.chia/mainnet/log and ~chia/.chia/mainnet/run directories are readable/writable.
 
-## Ubuntu
+## Ubuntu - systemd
 
 Copy chia_watch.service to /etc/systemd/system
 
