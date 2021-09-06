@@ -90,7 +90,7 @@ while read line ; do
                         echo "Restart Threshold(seconds): $seconds_without_eligible_until_restart"                              | tee -a $logdir/$restartlog
                         echo "Unix Timestamp: $(date +%s)"                                                                      | tee -a $logdir/$restartlog
                         echo "Restart triggered: $(date +%Y-%m-%d_%H-%M-%S)"                                                    | tee -a $logdir/$restartlog
-                        $blockchain_name start $node_role -r                                                                        | tee -a $logdir/$restartlog
+                        $blockchain_name start $node_role -r                                                                    | tee -a $logdir/$restartlog
                         restart_active="yes"
                         seconds_since_last_eligible="0"
                         current_pid=`cat $rundir/${blockchain_name}_${node_role}.pid`
@@ -100,7 +100,7 @@ while read line ; do
                 elif ! ps -p $current_pid > /dev/null && [ $restart_active = "no" ]
                 then
                         echo "#------------------------------------#"                                                           | tee -a $logdir/$restartlog
-                        echo "#No $node_role pid detected#"                                                                         | tee -a $logdir/$restartlog
+                        echo "#No $node_role pid detected#"                                                                     | tee -a $logdir/$restartlog
                         echo "#Farmer was probably stopped manually#"                                                           | tee -a $logdir/$restartlog
                         echo "Unix Timestamp: $(date +%s)"                                                                      | tee -a $logdir/$restartlog
                         echo "Downtime detected: $(date +%Y-%m-%d_%H-%M-%S)"                                                    | tee -a $logdir/$restartlog
@@ -111,7 +111,7 @@ while read line ; do
                         while [ ! -f $rundir/${blockchain_name}_${node_role}.pid ]; do
                                 sleep 30
                                 time_waited=$(($(date +%s)-$when_downtime_detected))
-                                echo "Waited for $node_role restart: $time_waited seconds"                                          | tee -a $logdir/$restartlog
+                                echo "Waited for $node_role restart: $time_waited seconds"                                      | tee -a $logdir/$restartlog
                         done
                         echo "Startup was triggered, waiting for plots to be loaded."                                           | tee -a $logdir/$restartlog
                 fi
