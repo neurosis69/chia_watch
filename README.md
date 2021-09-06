@@ -14,7 +14,7 @@ Current harvester versions seem to get stuck after some time. Sometimes after a 
   .) Wait until chia farmer is started again by checking for new file chia_farmer.pid and then continue 
   
 # Installation
-Copy chia_watch.sh to host and ensure ~chia/.chia/mainnet/log and ~chia/.chia/mainnet/run directories are readable/writable.
+Copy chia_watch.sh to the chia farmer host and ensure ~chia/.chia/mainnet/log and ~chia/.chia/mainnet/run directories are readable/writable.
 
 Ubuntu:
 Copy chia_watch.service to /etc/systemd/system
