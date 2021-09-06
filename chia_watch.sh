@@ -39,8 +39,6 @@ while read line ; do
                         echo "$line" | grep -q "plots were eligible" && last_eligible=`date +%s` && farmer_restart_active="no" && ((eligible_interval_count+=1))
                         if [ $farmer_restart_active = "no" ]
                         then
-                                #TEST
-                                #echo "$line"                                                                                                                   | tee -a $chia_logdir/$restartlog
                                 echo "Restart finished: $(date +%Y-%m-%d_%H-%M-%S)"                                             | tee -a $chia_logdir/$restartlog
                                 #add connection to local full node
                                 #chia show -a 192.168.1.164:8444                                                                 | tee -a $chia_logdir/$restartlog
@@ -66,7 +64,6 @@ while read line ; do
                         seconds_since_last_eligible="0"
                         current_farmer_pid=`cat $chia_rundir/chia_farmer.pid`
                         #TEST
-                        #trigger.restart for testing purpose
                         rm $chia_logdir/trigger.restart
                 #Farmer Restart not triggered by watch
                 elif ! ps -p $current_farmer_pid > /dev/null && [ $farmer_restart_active = "no" ]
@@ -87,9 +84,9 @@ while read line ; do
                         done
                         echo "Startup was triggered, waiting for plots to be loaded."                                           | tee -a $chia_logdir/$restartlog
                 fi
+                seconds_since_last_report=$(($(date +%s)-$last_report))
                 #TEST
                 #echo $seconds_since_last_eligible
-                seconds_since_last_report=$(($(date +%s)-$last_report))
                 #echo $seconds_since_last_report
                 if [ "$seconds_since_last_report" -gt "$seconds_until_write_report" ] && [ $farmer_restart_active = "no" ]
                 then
