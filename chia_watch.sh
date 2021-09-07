@@ -96,6 +96,7 @@ while read line ; do
                         echo "Unix Timestamp: $(date +%s)"                                                                      | tee -a $logdir/$restartlog
                         echo "Restart triggered: $(date +%Y-%m-%d_%H-%M-%S)"                                                    | tee -a $logdir/$restartlog
                         $blockchain_name start $node_role -r                                                                    | tee -a $logdir/$restartlog
+                        echo "Startup was triggered, waiting for plots to be loaded."                                           | tee -a $logdir/$restartlog
                         restart_active="yes"
                         seconds_since_last_eligible="0"
                         current_pid=`cat $rundir/${blockchain_name}_${node_role}.pid`
