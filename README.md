@@ -34,6 +34,8 @@ Copy chia_watch.service to /etc/systemd/system
 
 Change path for parameter ExecStart to the location of chia_watch.sh.
 
+Change parameter User to the osuser which should run the service.
+
 systemctl daemon-reload
 
 systemctl enable chia-watch.service
