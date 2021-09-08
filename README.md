@@ -6,7 +6,7 @@ Current harvester versions seem to get stuck after some time. Sometimes after a 
 This little service checks for such occurrences and restarts chia if no plots were eligible for a certain amount of time.
 
 
-# How it works
+## How it works
 
 1) Check for reoccuring "plots were eligible" string in debug.log
 
@@ -22,13 +22,13 @@ This little service checks for such occurrences and restarts chia if no plots we
 
     a) Wait until chia farmer is started again by checking for new file chia_farmer.pid and then continue 
   
-# Installation
+## Installation
 
 Copy chia_watch.sh to the chia farmer host.
 
 Ensure ~chia/.chia/mainnet/log and ~chia/.chia/mainnet/run directories are readable/writable.
 
-## Ubuntu - systemd
+### Ubuntu - systemd
 
 Copy chia_watch.service to /etc/systemd/system
 
