@@ -49,7 +49,7 @@ print_missing_eligibles="no"
 ########
 ##LOOP##
 ########
-egrep -o '^.*plots were eligible for farming|^.*Finished signage point|^.*Finished sub slot' $2/$Logfiles | sed -E 's/\ .*INFO\ //g' | \
+egrep -o '^.*plots were eligible for farming|^.*Finished signage point ..|^.*Finished sub slot ..' $2/$Logfiles | sed -E 's/\ .*INFO\ //g' | \
 while read line ; do
 	#Is Line Eligible or Signage?
 	echo "$line" | egrep -q "plots were eligible for farming" && eligible="yes" || eligible="no"
