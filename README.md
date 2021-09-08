@@ -41,3 +41,30 @@ systemctl daemon-reload
 systemctl enable chia-watch.service
 
 systemctl start chia-watch.service
+
+# check_missing_eligibles.sh
+
+Use this script to find out if there are missing proofs for signage points.
+
+This could be caused by several reasons, e.g. if you have bad lookup times, delays caused by network lags or many other reasons.
+
+Script is tested with Loglevel INFO.
+
+## Assumption
+
+After one signage point there should be a log entry stating, that chia is checking for Plots beeing eligible.
+
+If there are $problematic_threshold consecutive signage points without an eligible entry, I assume there is a problem and report to $logfile_name.
+
+## Usage
+
+Usage              . ./check_missing_eligibles.sh <LOGFILENAME> <PATH>
+
+<LOGFILENAME>      can be debug.log, debug.log.1, debug.log.2, ... or 'all' to scan for all to scan through all debug.log.*
+<PATH>             absolute path to logfiles. Log Report is also written to this path.
+
+Examples:
+                   . ./check_missing_eligibles.sh debug.log /home/flax/.flax/mainnet/log
+                   . ./check_missing_eligibles.sh all /home/flax/.flax/mainnet/log
+                   . ./check_missing_eligibles.sh debug.log.3 ~chia/.chia/mainnet/log
+
