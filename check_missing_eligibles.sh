@@ -11,7 +11,7 @@ debug_mode="false"
 #Report?
 report_mode="true"
 #Logfile Name
-logfile_name="missing_eligibles.out"
+logfile_name="missing_eligibles_`date +%s`.out"
 
 ##################
 ##Initialization##
