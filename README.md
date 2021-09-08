@@ -50,6 +50,8 @@ This could be caused by several reasons, e.g. if you have bad lookup times, dela
 
 Script is tested with Loglevel INFO.
 
+Processing on a Raspberry Pi can be rather slow.
+
 ## Assumption
 
 After one signage point there should be a log entry stating, that chia is checking for Plots beeing eligible.
