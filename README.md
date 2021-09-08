@@ -70,3 +70,4 @@ Examples:
                    . ./check_missing_eligibles.sh all /home/flax/.flax/mainnet/log
                    . ./check_missing_eligibles.sh debug.log.3 ~chia/.chia/mainnet/log
 
+![grafik](https://user-images.githubusercontent.com/83925572/132508867-8801a061-2cab-40bf-b911-7828df5ae6c7.png)
