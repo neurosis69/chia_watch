@@ -1,5 +1,6 @@
 [Unit]
 Description=Watch Chia Farm
+After=chia-farmer.service
 [Service]
 User=chia
 Type=simple
